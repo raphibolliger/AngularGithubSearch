@@ -3,26 +3,26 @@
         <div class="item">
             <img src="/assets/images/logo.png">
         </div>
-        <a class="item">...</a>
+        <div class="header item">
+            Angular Tutorial
+        </div>
+        <a routerLink="/github" class="item">GitHub</a>
+        <a routerLink="/speedcontrol" class="item">SpeedControl</a>
         <div class="right menu">
-            <div class="ui category search item">
-                <div class="ui transparent icon input" [class.loading]="isLoading">
-                    <input class="prompt" type="text" placeholder="Search user..." (keyup)="searchText.next($event.target.value)">
-                    <i class="search link icon"></i>
+            <div class="ui dropdown item" sm-dropdown>
+                Raphael Bolliger
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item">
+                        <i class="user icon"></i>Profil</a>
+                    <a class="item">
+                        <i class="edit icon"></i>Passwort ändern</a>
                 </div>
-                <div class="results"></div>
             </div>
         </div>
     </div>
 </div>
 
 <div class="ui container" style="padding-top: 7rem; padding-bottom: 2rem;">
-    <div *ngIf=error class="ui negative message">
-        <div class="header">
-            {{error.title}}
-        </div>
-        <p>{{error.message}}</p>
-    </div>
-
-    <app-profile [user]="user" [repos]="repos"></app-profile>
+    <router-outlet></router-outlet>
 </div>

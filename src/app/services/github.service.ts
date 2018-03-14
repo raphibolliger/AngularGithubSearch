@@ -9,12 +9,21 @@ import { catchError, retry } from "rxjs/operators";
 import { GitHubUser } from "../models/GitHubUser";
 import { GitHubRepo } from '../models/GitHubRepo';
 import { Error } from '../models/Error';
+import { GitHubSearchResult } from '../models/GitHubSearchResult';
 
 @Injectable()
 export class GithubService {
 
   constructor(private http: HttpClient) {
     console.log("GitHubService ready....");
+  }
+
+  searchUsers(query: string): Observable<GitHubSearchResult> {
+    console.log("search users with query: " + query);
+    return this.http.get<GitHubSearchResult>("https://api.github.com/search/users?q=" + query)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   getUser(username: string): Observable<GitHubUser> {
