@@ -1,5 +1,5 @@
-import { NgModule }       from '@angular/core';
-import { CommonModule }   from '@angular/common';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { Routes, RouterModule } from '@angular/router';
 
@@ -8,17 +8,25 @@ import { GitHubSearchComponent } from './search/search.component';
 import { GitHubProfileComponent } from './profile/profile.component';
 
 import { GithubService } from '../../services/github.service';
+import { AuthGuard } from '../../services/auth.guard';
 
 const gitHubRoutes: Routes = [
-  { path: 'github', component: GitHubSearchComponent },
-  { path: 'github/search', component: GitHubSearchComponent },
-  { path: 'github/:name', component: GitHubProfileComponent }
+  {
+    path: 'github',
+    component: GithubComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', component: GitHubSearchComponent },
+      { path: 'search', component: GitHubSearchComponent },
+      { path: ':name', component: GitHubProfileComponent }
+    ]
+  }
 ];
- 
+
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(gitHubRoutes)
+    RouterModule.forChild(gitHubRoutes)
   ],
   exports: [
     RouterModule
@@ -28,7 +36,7 @@ const gitHubRoutes: Routes = [
     GitHubSearchComponent,
     GitHubProfileComponent
   ],
-  providers: [ GithubService ]
+  providers: [GithubService]
 })
 
-export class GitHubModule {}
+export class GitHubModule { }

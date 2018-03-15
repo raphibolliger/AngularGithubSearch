@@ -3,23 +3,36 @@ import { CommonModule } from "@angular/common";
 import { Routes, RouterModule } from "@angular/router";
 
 import { SpeedcontrolComponent } from "./speedcontrol.component";
+import { SpeedControlDashboardComponent } from './dashboard/dashboard.component';
+import { SpeedControlListComponent } from './list/list.component';
+import { SpeedcontrolService } from '../../services/speedcontrol.service';
 
 const speedControlRoutes: Routes = [
-    { path: 'speedcontrol', component: SpeedcontrolComponent },
+    {
+        path: 'speedcontrol',
+        component: SpeedcontrolComponent,
+        children: [
+            { path: '', component: SpeedControlDashboardComponent },
+            { path: 'list', component: SpeedControlListComponent }
+        ]
+    }
 ];
 
 @NgModule({
     imports: [
         CommonModule,
-        RouterModule.forRoot(speedControlRoutes)
+        RouterModule.forChild(speedControlRoutes)
     ],
     exports: [
         RouterModule
     ],
     declarations: [
-        SpeedcontrolComponent
+        SpeedcontrolComponent,
+        SpeedControlDashboardComponent,
+        SpeedControlListComponent
     ],
     providers: [
+        SpeedcontrolService
     ]
 })
 
