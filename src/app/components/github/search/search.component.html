@@ -10,7 +10,7 @@
   <i class="search icon"></i>
 </div>
 
-<div *ngIf="users.length <= 0" class="ui message">
+<div *ngIf="!users || users.length <= 0" class="ui message">
   <div class="header">
     Benutzer suchen
   </div>

@@ -5,29 +5,35 @@ import { FormsModule } from "@angular/forms";
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from "./app.routing";
 
-import { GithubService } from './services/github.service';
+import { GitHubModule } from './components/github/github.module';
+import { AccountModule } from './components/account/account.module';
+
+import { GithubComponent } from './components/github/github.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { SemanticDropdownDirective } from './directives/dropdown';
-import { GitHubSearchComponent } from './components/github/search/search.component';
-import { GitHubProfileComponent } from './components/github/profile/profile.component';
-import { GithubComponent } from './components/github/github.component';
-import { GitHubRoutingModule } from './components/github/github.routing.module';
-import { GitHubModule } from './components/github/github.module';
+import { SpeedcontrolModule } from './components/speedcontrol/speedcontrol.module';
 
+const appRoutes: Routes = [
+  { path: '', component: GithubComponent },
+  { path: '**', component: NotfoundComponent }
+];
 
 @NgModule({
   imports: [
+    RouterModule.forRoot(appRoutes, { enableTracing: false } ), // <-- debugging purposes only
     BrowserModule,
     FormsModule,
     HttpClientModule,
     GitHubModule,
-    AppRoutingModule
+    SpeedcontrolModule,
+    AccountModule
+  ],
+  exports: [
+    RouterModule
   ],
   declarations: [
     AppComponent,
-    GithubComponent,
     NotfoundComponent,
     SemanticDropdownDirective
   ],
