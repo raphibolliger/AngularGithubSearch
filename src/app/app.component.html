@@ -6,17 +6,24 @@
         <div class="header item">
             Angular Tutorial
         </div>
-        <a routerLink="/github" class="item">GitHub</a>
-        <a routerLink="/speedcontrol" class="item">SpeedControl</a>
-        <div class="right menu">
-            <div class="ui dropdown item" sm-dropdown>
+        <a *ngIf=authService.isLoggedIn routerLink="/github" class="item">GitHub</a>
+        <a *ngIf=authService.isLoggedIn routerLink="/speedcontrol" class="item">SpeedControl</a>
+        <div class="right menu border">
+            <a *ngIf=!authService.isLoggedIn routerLink="/account/login" class="item">Anmelden</a>
+
+            <div *ngIf=authService.isLoggedIn class="ui dropdown item" sm-dropdown>
                 Raphael Bolliger
                 <i class="dropdown icon"></i>
                 <div class="menu">
-                    <a class="item">
-                        <i class="user icon"></i>Profil</a>
-                    <a class="item">
-                        <i class="edit icon"></i>Passwort ändern</a>
+                    <a routerLink="/account/profile" class="item">
+                        <i class="user circle icon"></i>Profil
+                    </a>
+                    <a routerLink="/account/password" class="item">
+                        <i class="edit icon"></i>Passwort ändern
+                    </a>
+                    <a (click)=authService.logout() class="item">
+                        <i class="lock icon"></i>Abmelden
+                    </a>
                 </div>
             </div>
         </div>

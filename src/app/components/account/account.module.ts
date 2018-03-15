@@ -10,6 +10,7 @@ import { AuthGuard } from '../../services/auth.guard';
 
 const accountRoutes: Routes = [
     { path: 'account', component: AccountProfileComponent },
+    { path: 'account/profile', component: AccountProfileComponent },
     { path: 'account/login', component: AccountLoginComponent }
 ];
 
