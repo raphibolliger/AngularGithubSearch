@@ -12,7 +12,7 @@ const speedControlRoutes: Routes = [
         path: 'speedcontrol',
         component: SpeedcontrolComponent,
         children: [
-            { path: '', component: SpeedControlDashboardComponent },
+            { path: '', component: SpeedControlListComponent },
             { path: 'list', component: SpeedControlListComponent }
         ]
     }

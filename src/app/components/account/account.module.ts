@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { NotfoundComponent } from '../notfound/notfound.component';
@@ -16,6 +17,7 @@ const accountRoutes: Routes = [
 
 @NgModule({
     imports: [
+        FormsModule,
         CommonModule,
         RouterModule.forRoot(accountRoutes)
     ],

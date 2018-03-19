@@ -1,8 +1,10 @@
+<!--
 <div class="ui inverted dimmer" [class.active]="isLoading">
   <div class="ui text loader">Wird geladen...</div>
 </div>
+-->
 
-<button class="fluid ui large button" (click)=loadCameras()>Aktualisieren</button>
+<button class="fluid ui large button" [class.loading]="isLoading" (click)=loadCameras()>Aktualisieren</button>
 
 <table class="ui striped table">
 

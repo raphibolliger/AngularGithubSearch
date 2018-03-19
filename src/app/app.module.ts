@@ -13,6 +13,7 @@ import { GithubComponent } from './components/github/github.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { SemanticDropdownDirective } from './directives/dropdown';
 import { SpeedcontrolModule } from './components/speedcontrol/speedcontrol.module';
+import { TokenInterceptor, httpInterceptorProviders } from './helpers/AuthInterceptor';
 
 const appRoutes: Routes = [
   { path: '', component: GithubComponent },
@@ -37,7 +38,9 @@ const appRoutes: Routes = [
     NotfoundComponent,
     SemanticDropdownDirective
   ],
-  providers: [],
+  providers: [
+    httpInterceptorProviders
+  ],
   bootstrap: [AppComponent]
 })
 
