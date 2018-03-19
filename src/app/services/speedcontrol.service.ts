@@ -8,7 +8,7 @@ import { SpeedControlCamera } from '../models/SpeedControlCamera';
 @Injectable()
 export class SpeedcontrolService {
 
-  private url:string = "https://speedcontrolwarning.azurewebsites.net/api/GetSpeedControlCameras?code=qhzjqxkNI9H0kDhJBdZbJpzHpvaThS8n/MfGWe1XV0Mxx5/H5XlKHg==";
+  private url:string = "https://localhost:44372/v1/speedcontrol/list";
 
   constructor(private http: HttpClient) { }
 

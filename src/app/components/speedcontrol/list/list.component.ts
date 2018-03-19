@@ -19,7 +19,7 @@ export class SpeedControlListComponent implements OnInit {
     this.speedControlCameraService.getCameras()
       .finally(() => this.isLoading = false)
       .subscribe(
-        c => { this.cameras = c }
+        c => { console.log(c), this.cameras = c }
       );
   }
 

@@ -1,28 +1,20 @@
 <table class="ui striped table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Status</th>
-      <th>Notes</th>
+      <th>Adresse</th>
+      <th>Type</th>
+      <th>Date</th>
     </tr>
   </thead>
   <tbody>
-    <tr class="top aligned">
-      <td>John</td>
-      <td>Approved</td>
-      <td class="top aligned">
-        Notes<br>
-        1<br>
-        2<br>
+    <tr *ngFor="let cam of cameras"  class="top aligned">
+      <td class="top aligned"><b>{{cam.city}}</b>
+        <br><small>{{cam.formattedAddress}}</small>
       </td>
-    </tr>
-    <tr>
-      <td>Jamie</td>
-      <td class="bottom aligned">Approved</td>
+      <td>{{cam.typeText}}</td>
       <td>
-        Notes<br>
-        1<br>
-        2<br>
+        {{cam.timestamp | date:'HH:mm':'+0100'}} Uhr<br>
+        <small>{{cam.timestamp | date:'dd. MMMM yyyy'}}</small>
       </td>
     </tr>
   </tbody>
