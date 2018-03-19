@@ -1,4 +1,12 @@
+<div class="ui inverted dimmer" [class.active]="isLoading">
+  <div class="ui text loader">Wird geladen...</div>
+</div>
+
+<button class="fluid ui large button" (click)=loadCameras()>Aktualisieren</button>
+
 <table class="ui striped table">
+
+
   <thead>
     <tr>
       <th>Adresse</th>
@@ -7,13 +15,16 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let cam of cameras"  class="top aligned">
-      <td class="top aligned"><b>{{cam.city}}</b>
-        <br><small>{{cam.formattedAddress}}</small>
+    <tr *ngFor="let cam of cameras" class="top aligned">
+      <td class="top aligned">
+        <b>{{cam.city}}</b>
+        <br>
+        <small>{{cam.formattedAddress}}</small>
       </td>
       <td>{{cam.typeText}}</td>
       <td>
-        {{cam.timestamp | date:'HH:mm':'+0100'}} Uhr<br>
+        {{cam.timestamp | date:'HH:mm':'+0100'}} Uhr
+        <br>
         <small>{{cam.timestamp | date:'dd. MMMM yyyy'}}</small>
       </td>
     </tr>

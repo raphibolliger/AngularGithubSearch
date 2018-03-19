@@ -15,6 +15,10 @@ export class SpeedControlListComponent implements OnInit {
   constructor(private speedControlCameraService: SpeedcontrolService) { }
 
   ngOnInit() {
+    this.loadCameras();
+  }
+
+  public loadCameras(): void {
     this.isLoading = true;
     this.speedControlCameraService.getCameras()
       .finally(() => this.isLoading = false)
