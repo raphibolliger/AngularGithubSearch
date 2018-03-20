@@ -1,29 +1,31 @@
-<div *ngIf=error class="ui negative message">
-  <div class="header">
-    {{error.title}}
-  </div>
-  <p>{{error.message}}</p>
-</div>
-
-<div class="ui fluid large left icon input" [class.loading]="isLoading">
-  <input class="prompt" type="text" placeholder="Search GitHub users..." (keyup)="searchText.next($event.target.value)">
-  <i class="search icon"></i>
-</div>
-
-<div *ngIf="!users || users.length <= 0" class="ui message">
-  <div class="header">
-    Benutzer suchen
-  </div>
-  <p>Zu diesem Suchbegriff konnten keine GitHub Benutzer gefunden werden. Bitte versuche einen anderen Suchbegriff.</p>
-</div>
-
-<div ng-if=users class="ui doubling seven cards" style="padding-top: 1rem;">
-  <a routerLink="/github/{{user.login}}" class="card" *ngFor="let user of users">
-    <div class="image">
-      <img src="{{user.avatar_url}}">
-    </div>
-    <div class="extra">
-      {{user.login}}
-    </div>
-  </a>
+<div class="ui segment">
+    <div *ngIf=error class="ui negative message">
+        <div class="header">
+          {{error.title}}
+        </div>
+        <p>{{error.message}}</p>
+      </div>
+      
+      <div class="ui fluid large left icon input" [class.loading]="isLoading">
+        <input class="prompt" type="text" placeholder="Search GitHub users..." (keyup)="searchText.next($event.target.value)">
+        <i class="search icon"></i>
+      </div>
+      
+      <div *ngIf="!githubservice.users || githubservice.users.length <= 0" class="ui message">
+        <div class="header">
+          Benutzer suchen
+        </div>
+        <p>Zu diesem Suchbegriff konnten keine GitHub Benutzer gefunden werden. Bitte versuche einen anderen Suchbegriff.</p>
+      </div>
+      
+      <div ng-if=users class="ui doubling seven cards" style="padding-top: 1rem;">
+        <a routerLink="/github/{{user.login}}" class="card" *ngFor="let user of githubservice.users">
+          <div class="image">
+            <img src="{{user.avatar_url}}">
+          </div>
+          <div class="extra">
+            {{user.login}}
+          </div>
+        </a>
+      </div>
 </div>

@@ -1,14 +1,16 @@
-<table class="ui single line table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let user of userService.users">
-      <td>{{user.firstName}} {{user.lastName}}</td>
-      <td>{{user.email}}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="ui segment">
+  <table class="ui single line table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of userService.users">
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.email}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

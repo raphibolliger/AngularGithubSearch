@@ -25,9 +25,8 @@ export class GitHubSearchComponent implements OnInit {
   error: Error;
 
   searchedUser: string;
-  users: GitHubUser[];
 
-  constructor(private githubservice: GithubService) {
+  constructor(public githubservice: GithubService) {
     console.warn("GitHubSearch component initialized...");
   }
 
@@ -48,8 +47,8 @@ export class GitHubSearchComponent implements OnInit {
     this.githubservice.searchUsers(query)
     .finally(() => this.isLoading = false)
     .subscribe(
-      r => { this.users = r.items, this.error = null },
-      e => { this.searchedUser = "", this.users = [], this.error = e }
+      _ => { this.error = null },
+      e => { this.searchedUser = "", this.githubservice.users = null, this.error = e }
     );
   }
 

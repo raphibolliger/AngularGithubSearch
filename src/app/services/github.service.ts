@@ -14,6 +14,8 @@ import { GitHubSearchResult } from '../models/GitHubSearchResult';
 @Injectable()
 export class GithubService {
 
+  public users: GitHubUser[];
+
   constructor(private http: HttpClient) {
     console.log("GitHubService ready....");
   }
@@ -21,9 +23,8 @@ export class GithubService {
   searchUsers(query: string): Observable<GitHubSearchResult> {
     console.log("search users with query: " + query);
     return this.http.get<GitHubSearchResult>("https://api.github.com/search/users?q=" + query)
-      .pipe(
-        catchError(this.handleError)
-      );
+      .map(result => this.users = result.items)
+      .pipe(catchError(this.handleError));
   }
 
   getUser(username: string): Observable<GitHubUser> {

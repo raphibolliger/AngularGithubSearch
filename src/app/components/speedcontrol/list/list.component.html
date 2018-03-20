@@ -4,31 +4,33 @@
 </div>
 -->
 
-<button class="fluid ui large button" [class.loading]="isLoading" (click)=loadCameras()>Aktualisieren</button>
+<div class="ui segment">
+  <button class="fluid ui large button" [class.loading]="isLoading" (click)=loadCameras()>Aktualisieren</button>
 
-<table class="ui striped table">
+  <table class="ui striped table">
 
 
-  <thead>
-    <tr>
-      <th>Adresse</th>
-      <th>Type</th>
-      <th>Date</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let cam of cameraService.cameras" class="top aligned">
-      <td class="top aligned">
-        <b>{{cam.city}}</b>
-        <br>
-        <small>{{cam.formattedAddress}}</small>
-      </td>
-      <td>{{cam.typeText}}</td>
-      <td>
-        {{cam.timestamp | date:'HH:mm':'+0100'}} Uhr
-        <br>
-        <small>{{cam.timestamp | date:'dd. MMMM yyyy'}}</small>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <thead>
+      <tr>
+        <th>Adresse</th>
+        <th>Type</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cam of cameraService.cameras" class="top aligned">
+        <td class="top aligned">
+          <b>{{cam.city}}</b>
+          <br>
+          <small>{{cam.formattedAddress}}</small>
+        </td>
+        <td>{{cam.typeText}}</td>
+        <td>
+          {{cam.timestamp | date:'HH:mm':'+0100'}} Uhr
+          <br>
+          <small>{{cam.timestamp | date:'dd. MMMM yyyy'}}</small>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
