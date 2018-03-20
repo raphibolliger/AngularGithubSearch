@@ -14,6 +14,7 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { SemanticDropdownDirective } from './directives/dropdown';
 import { SpeedcontrolModule } from './components/speedcontrol/speedcontrol.module';
 import { TokenInterceptor, httpInterceptorProviders } from './helpers/AuthInterceptor';
+import { UsersModule } from './components/users/users.module';
 
 const appRoutes: Routes = [
   { path: '', component: GithubComponent },
@@ -28,7 +29,8 @@ const appRoutes: Routes = [
     HttpClientModule,
     GitHubModule,
     SpeedcontrolModule,
-    AccountModule
+    AccountModule,
+    UsersModule
   ],
   exports: [
     RouterModule

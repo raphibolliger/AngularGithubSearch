@@ -8,13 +8,12 @@ import { SpeedControlCamera } from '../models/SpeedControlCamera';
 @Injectable()
 export class SpeedcontrolService {
 
-  private url:string = "https://localhost:44372/v1/speedcontrol/list";
+  public cameras: SpeedControlCamera[];
 
   constructor(private http: HttpClient) { }
 
   getCameras() {
-    console.log("load all active cameras");
-    return this.http.get<SpeedControlCamera[]>(this.url);
+    return this.http.get<SpeedControlCamera[]>("https://localhost:44372/v1/speedcontrol/list").map(res => this.cameras = res);
   }
 
 }

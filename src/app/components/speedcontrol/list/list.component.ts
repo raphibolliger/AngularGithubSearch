@@ -10,9 +10,8 @@ import { SpeedControlCamera } from '../../../models/SpeedControlCamera';
 export class SpeedControlListComponent implements OnInit {
 
   public isLoading: boolean = false;
-  public cameras: SpeedControlCamera[];
 
-  constructor(private speedControlCameraService: SpeedcontrolService) { }
+  constructor(public cameraService: SpeedcontrolService) { }
 
   ngOnInit() {
     this.loadCameras();
@@ -20,11 +19,9 @@ export class SpeedControlListComponent implements OnInit {
 
   public loadCameras(): void {
     this.isLoading = true;
-    this.speedControlCameraService.getCameras()
+    this.cameraService.getCameras()
       .finally(() => this.isLoading = false)
-      .subscribe(
-        c => { console.log(c), this.cameras = c }
-      );
+      .subscribe();
   }
 
 }

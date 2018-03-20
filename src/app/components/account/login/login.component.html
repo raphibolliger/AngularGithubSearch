@@ -1,20 +1,32 @@
-<form class="ui large form" [class.loading]="isLoading">
+<form class="ui large form" #loginForm="ngForm" [class.loading]="isLoading">
   <div class="ui stacked segment">
+    <h2>Anmelden</h2>
+    <p>Bitte melden Sie sich an um alle komponenten des Systems zu nutzen.</p>
     <div class="field">
-      <div class="ui left icon input">
+      <div class="ui large left icon input">
         <i class="user icon"></i>
-        <input [(ngModel)]="loginViewModel.email" type="text" name="email" placeholder="Emailadresse">
+        <input id="email" name="email" [(ngModel)]="loginViewModel.email" #name="ngModel" type="text" required placeholder="Emailadresse">
+      </div>
+      <div class="ui pointing red basic label">
+          Bitte geben Sie eine gültige Emailadresse an.
       </div>
     </div>
     <div class="field">
-      <div class="ui left icon input">
+      <div class="ui large left icon input">
         <i class="lock icon"></i>
         <input [(ngModel)]="loginViewModel.password" type="password" name="password" placeholder="Passwort">
       </div>
     </div>
-    <div class="ui fluid large teal submit button" (click)="login()">Anmelden</div>
+    <div class="ui field">
+        <div class="ui fluid large blue button" (click)="login()">Anmelden</div>
+    </div>
+    <div class="ui field">
+        <a class="ui basic fluid button" routerLink="/account/forgot">
+          Passwort vergessen?
+        </a>
+    </div>
+    
+    
   </div>
-
-  <div class="ui error message"></div>
 
 </form>

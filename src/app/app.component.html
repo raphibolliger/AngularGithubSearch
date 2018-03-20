@@ -8,7 +8,7 @@
         </div>
         <a routerLink="/github" class="item" routerLinkActive="active">GitHub</a>
         <a *ngIf=authService.isLoggedIn routerLink="/speedcontrol" class="item" routerLinkActive="active">SpeedControl</a>
-        <a *ngIf=authService.isLoggedIn routerLink="/account/users" class="item" routerLinkActive="active">Benutzerverwaltung</a>
+        <a *ngIf=authService.isLoggedIn routerLink="/users" class="item" routerLinkActive="active">Benutzerverwaltung</a>
         <div class="right menu border">
             <a *ngIf=!authService.isLoggedIn routerLink="/account/login" class="item" routerLinkActive="active">Anmelden</a>
 

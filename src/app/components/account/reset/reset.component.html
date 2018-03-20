@@ -1,0 +1,21 @@
+<div class="ui segment" [class.loading]="isLoading">
+  <h2>Passwort ändern</h2>
+  <p>Bitte geben Sie ein neues Passwort ein. Anschliessend können Sie sich wie gewohnt anmelden.</p>
+
+  <div class="ui large form">
+    <div class="ui field">
+      <div class="ui fluid left icon input">
+        <input [(ngModel)]="resetPasswordModel.password" type="password" placeholder="Passwort">
+        <i class="key icon"></i>
+      </div>
+    </div>
+    <div class="ui field">
+        <div class="ui fluid left icon input">
+          <input [(ngModel)]="resetPasswordModel.confirmPassword" type="password" placeholder="Passwort wiederholen">
+          <i class="key icon"></i>
+        </div>
+      </div>
+    <button class="ui large blue fluid button" (click)="resetPassword()">Passwort ändern</button>
+  </div>
+
+</div>

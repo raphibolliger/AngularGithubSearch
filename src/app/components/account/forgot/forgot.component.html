@@ -1,0 +1,22 @@
+<div class="ui success message" *ngIf="success">
+  <div class="header">
+    Hilfe ist unterwegs
+  </div>
+  <p>Sie erhalten in kürze ein Email mit weiteren Informationen. Sie können das Fenster nun schliessen.</p>
+</div>
+
+<div class="ui segment" [class.loading]="isLoading" [class.disabled]="success">
+  <h2>Passwort zurücksetzen</h2>
+  <p>Bitte geben Sie Ihre Emailadresse ein. Alle weiteren Infomrationen erhalten Sie anschliessend per Email.</p>
+
+  <div class="ui large form">
+    <div class="ui field">
+      <div class="ui fluid left icon input">
+        <input [(ngModel)]="emailAdress" type="text" [class.disabled]="success" placeholder="Emailadresse">
+        <i class="envelope outline icon"></i>
+      </div>
+    </div>
+    <button class="ui large blue fluid button" [class.disabled]="success" (click)="sendResetLink()">Zurücksetzen</button>
+  </div>
+
+</div>
