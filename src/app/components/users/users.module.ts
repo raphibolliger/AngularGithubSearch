@@ -7,6 +7,9 @@ import { UserListComponent } from './list/list.component';
 
 import { AuthGuard } from '../../services/auth.guard';
 import { UserService } from '../../services/user.service';
+import { UserCreateComponent } from './create/create.component';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const usersRoute: Routes = [
     {
@@ -21,6 +24,7 @@ const usersRoute: Routes = [
 
 @NgModule({
     imports: [
+        FormsModule,
         CommonModule,
         RouterModule.forChild(usersRoute)
     ],
@@ -29,7 +33,8 @@ const usersRoute: Routes = [
     ],
     declarations: [
         UsersComponent,
-        UserListComponent
+        UserListComponent,
+        UserCreateComponent
     ],
     providers: [
         UserService

@@ -8,10 +8,15 @@ import { UserService } from '../../../services/user.service';
 })
 export class UserListComponent implements OnInit {
 
+  public isLoading: boolean = false;
+
   constructor(public userService: UserService) { }
 
   ngOnInit() {
-    this.userService.loadUsers().subscribe();
+    this.userService.creating = false;
+    this.userService.loadUsers()
+      .finally(() => this.isLoading = false)
+      .subscribe();
   }
 
 }

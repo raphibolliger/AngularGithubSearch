@@ -1,0 +1,29 @@
+<div class="ui segment" [class.loading]=isLoading>
+  <form class="ui form" #createUserForm="ngForm">
+    <h4 class="ui dividing header">Benutzer erstellen</h4>
+    <div class="field">
+      <div class="two fields">
+        <div class="field">
+          <label>Vorname</label>
+          <input [(ngModel)]=userViewModel.firstName name="firstName" type="text" placeholder="Vorname">
+        </div>
+        <div class="field">
+          <label>Nachname</label>
+          <input [(ngModel)]=userViewModel.lastName name="lastName" type="text" placeholder="Nachname">
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label>Emailadresse</label>
+      <input [(ngModel)]=userViewModel.email name="email" type="text" placeholder="Emailadresse">
+    </div>
+    <div class="field">
+      <a class="ui left labeled icon button" (click)="userService.creating=false">
+        <i class="close icon"></i> Abbrechen
+      </a>
+      <a class="ui left green labeled icon button" (click)="createUser()">
+        <i class="save icon"></i> Speichern
+      </a>
+    </div>
+  </form>
+</div>

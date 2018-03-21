@@ -1,15 +1,36 @@
-<div class="ui segment">
-  <table class="ui single line table">
+<app-usercreate *ngIf=userService.creating></app-usercreate>
+
+<div *ngIf=!userService.creating class="ui segment">
+  <button class="ui left green labeled icon button" (click)="userService.creating=true">
+    <i class="user icon"></i> Hinzufügen
+  </button>
+</div>
+
+<h3 class="ui top attached header">
+  Benutzerverwaltung
+</h3>
+<div class="ui attached segment">
+  <table class="ui table">
     <thead>
       <tr>
+        <th>#</th>
         <th>Name</th>
         <th>Email</th>
+        <th></th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of userService.users">
+      <tr *ngFor="let user of userService.users; let i = index;">
+        <td>{{i}}</td>
         <td>{{user.firstName}} {{user.lastName}}</td>
         <td>{{user.email}}</td>
+        <td style="width: 1%;">
+          <a class="ui green label">Bearbeiten</a>
+        </td>
+        <td style="width: 1%;">
+          <a class="ui red label">Löschen</a>
+        </td>
       </tr>
     </tbody>
   </table>
